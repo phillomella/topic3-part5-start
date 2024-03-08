@@ -18,20 +18,27 @@ import androidx.compose.ui.unit.sp
 import java.util.*
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.MaterialTheme
 
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         binding.backButton.setOnClickListener {
             finish()
         }
-        binding.button.setOnClickListener {
-            showToast()
+
+        binding.composeButton.setContent {
+            MaterialTheme {
+                ComposeButton { showToast() }
+
+            }
         }
     }
     private fun showToast() {
