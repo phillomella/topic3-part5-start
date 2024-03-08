@@ -108,6 +108,24 @@ fun HomeScreen(viewModel: MainViewModel) {
     }
 }
 
+private fun mapHomeScreenItems(
+    posts: List<PostModel>
+): List<HomeScreenItem> {
+    val homeScreenItems = mutableListOf<HomeScreenItem>()
+
+    homeScreenItems.add(
+        HomeScreenItem(HomeScreenItemType.TRENDING)
+    )
+
+    posts.forEach { post ->
+        homeScreenItems.add(
+            HomeScreenItem(HomeScreenItemType.POST, post)
+        )
+    }
+    return homeScreenItems
+}
+
+
 private data class HomeScreenItem(
     val type: HomeScreenItem,
     val post :PostModel? =null
